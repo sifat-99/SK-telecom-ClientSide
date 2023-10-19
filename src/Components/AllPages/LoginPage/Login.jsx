@@ -2,7 +2,7 @@
 import { useContext } from "react";
 import { NavLink, redirect, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
-// import { FcGoogle } from "react-icons/fc";
+import { FcGoogle } from "react-icons/fc";
 import { GoogleAuthProvider } from "firebase/auth";
 import swal from "sweetalert";
 
@@ -17,8 +17,9 @@ const Login = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     signIn(email, password)
-      .then(() => {
-        // console.log(res.user)
+      .then((res) => {
+        console.log(res.user)
+        swal("Congratulation!", "You have successfully Logged in!", "success");
         navigate(location ? location?.state : "/");
         redirect("/");
       })
@@ -26,7 +27,9 @@ const Login = () => {
         
         swal("Oops!", `You can not Logged in!${err.message}`, "error");
       });
-    e.target.reset();
+
+      e.target.reset();
+
   };
   const handleGoogleLogin = (e) => {
     e.preventDefault();
@@ -40,7 +43,6 @@ const Login = () => {
       .catch(() => {
         // console.log(err);
       });
-    e.target.reset();
   };
 
   return (
@@ -100,7 +102,7 @@ const Login = () => {
             onClick={handleGoogleLogin}
             className="text-3xl flex items-center btn normal-case"
           >
-            {/* <FcGoogle></FcGoogle> */}
+            <FcGoogle></FcGoogle>
           </button>
         </div>
       </div>

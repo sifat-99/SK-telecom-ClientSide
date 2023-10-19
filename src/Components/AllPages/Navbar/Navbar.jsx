@@ -1,11 +1,23 @@
 
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
-// import swal from "sweetalert";
+import { AuthContext } from "../../Provider/AuthProvider";
+import swal from "sweetalert";
 
 const Navbar = () => {
-
+  const { user, logOut } = useContext(AuthContext);
   // console.log(user?.displayName)
-  const user = "";
+  const handleLogout = () => {
+    logOut()
+      .then(() => {
+        swal("Congratulation!", "You have successfully Logged out!", "success");
+
+      })
+      .catch((err) => {
+        swal("Oops!", `You can not Logged out!${err.message}`, "error");
+      });
+  };
+
   
 
   const NavBarItems = (
@@ -18,8 +30,8 @@ const Navbar = () => {
             isPending
               ? "pending"
               : isActive
-              ? "bg-[#FF444A] underline text-white font-bold text-xl"
-              : ""
+              ? "bg-[#FF444A] underline text-white font-bold text-2xl"
+              : "text-2xl"
           }
         >
           Home
@@ -30,10 +42,10 @@ const Navbar = () => {
           to={"/about"}
           className={({ isActive, isPending }) =>
             isPending
-              ? "pending"
+              ? "pending text-2xl"
               : isActive
-              ? "bg-[#FF444A] underline text-white font-bold text-xl"
-              : ""
+              ? "bg-[#FF444A] underline text-white font-bold text-2xl"
+              : "text-2xl"
           }
         >
           About
@@ -43,11 +55,11 @@ const Navbar = () => {
   );
 
   return  (
-    <div className="navbar bg-base-100 sticky inset-0 z-10 py-5">
+    <div className="navbar bg-orange-100 text-black font-bold sticky inset-0 z-10 py-5">
       <div className="navbar-start">
         <div className="flex flex-row-reverse ">
           <Link to={"/"}>
-            {/* <img className="w-1/2" src={} alt="" /> */}
+            <img className="w-2/4 h-2/3" src='/S.K.png' alt="" />
           </Link>
           <div className="drawer">
             <input id="my-drawer" type="checkbox" className="drawer-toggle" />
@@ -105,7 +117,7 @@ const Navbar = () => {
             </li>
           ) : (
             <NavLink to={"/register"}>
-              <button className="btn btn-ghost">Register</button>
+              <button className="btn text-2xl font-bold btn-ghost">Register</button>
             </NavLink>
           )}
         </ul>
@@ -142,7 +154,7 @@ const Navbar = () => {
                     <Link to={'/dashboard'}><button>Dashboard</button></Link>
                   </li>
                   <li>
-                   <button>Sign Out</button>
+                   <button onClick={handleLogout}>Sign Out</button>
                   </li>
                 </ul>
               </div>

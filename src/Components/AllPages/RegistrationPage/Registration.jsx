@@ -43,6 +43,7 @@ const Registration = () => {
           button: " Login Now!!!",
         }).then(function () {
           window.location = "/login";
+          e.target.reset();
           // for force the new Registered user to login again after registration to access everything.
           logOut();
         });
@@ -53,7 +54,7 @@ const Registration = () => {
       });
     
     // console.log(email, password, image, name);
-    e.target.reset();
+    
   };
 
   return (
