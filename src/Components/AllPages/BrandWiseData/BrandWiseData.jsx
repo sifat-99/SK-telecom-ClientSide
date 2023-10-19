@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLoaderData, useParams,  } from "react-router-dom";
 import Product from "./Product";
+import Banner from "../HomePage/Banner";
 
 
 const BrandWiseData = () => {
@@ -21,18 +22,20 @@ const BrandWiseData = () => {
         fetch('http://localhost:5001/products')
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
+                // console.log(data);
                 const filteredData = data.filter((product) => product.Brand == brand.brandName);
                 setFilteredData(filteredData);
             });
     }
-    ,[brand.brandName])
+    ,[brand])
 
-    console.log(filteredData);
+    // console.log(filteredData);
   
     return (
-        <div>
-            <h2>{filteredData.length}</h2>
+        
+        <div className="mt-28">
+            <Banner></Banner>
+            {/* <h2>{filteredData.length}</h2> */}
             {
                 filteredData.map((product) => (
                     <Product key={product._id} product ={product}></Product>

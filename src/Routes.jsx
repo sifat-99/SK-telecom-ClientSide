@@ -8,6 +8,8 @@ import AddData from "./Components/AllPages/PostData/AddData";
 import PrivateRoute from "./Components/AllPages/PrivateRoute/PrivateRoute";
 import BrandWiseData from "./Components/AllPages/BrandWiseData/BrandWiseData";
 import Cart from "./Components/AllPages/UserCart/Cart";
+import ProductDetails from "./Components/AllPages/BrandWiseData/ProductDetails";
+import Update from "./Components/AllPages/UpdateData/Update";
 
 const Routes = createBrowserRouter([
   {
@@ -49,6 +51,20 @@ const Routes = createBrowserRouter([
         path: "/dashboard",
         element: <ErrorPage></ErrorPage>,
       },
+      {
+        path:"/:id/:_id",
+        element:<PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>,
+        loader: () => fetch('http://localhost:5001/products'),
+      },
+      {
+        path: "/update/:id",
+        element:<Update></Update>,
+        loader: ({params}) =>
+        {
+            console.log(params)
+            return fetch(`http://localhost:5001/products/${params.id}`)
+        },
+      }
     ],
   },
 ]);

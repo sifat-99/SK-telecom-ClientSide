@@ -1,26 +1,9 @@
 import PropTypes from "prop-types";
-import { AuthContext } from "../../Provider/AuthProvider";
-import { useContext } from "react";
+// import { AuthContext } from "../../Provider/AuthProvider";
+// import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 const Product = ({ product }) => {
-  const { user } = useContext(AuthContext);
-
-  const userID = user.uid;
-  const handleADDtoCart = () => {
-    console.log("Add to cart clicked");
-    const addToCartByUser = { products: product, userID };
-    console.log(addToCartByUser);
-
-    fetch(`http://localhost:5001/addProduct/Cart`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(addToCartByUser),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
-  };
   return (
     <div>
       <h2>{product.length}</h2>
@@ -30,12 +13,13 @@ const Product = ({ product }) => {
         </figure>
         <div className="card-body">
           <h2 className="card-title">{product?.name}</h2>
-          <p>{product?.details}</p>
           <p>{product?.Price} $</p>
           <div className="card-actions justify-end">
-            <button onClick={handleADDtoCart} className="btn btn-secondary">
-              Add to Cart
+            <Link to={`/id/${product?._id}`} ><button className="btn btn-secondary">
+              Details
             </button>
+            </Link>
+            <Link to={`/update/${product?._id}`}><button className="btn btn-primary">Update</button></Link>
           </div>
         </div>
       </div>
@@ -48,3 +32,6 @@ Product.propTypes = {
 };
 
 export default Product;
+
+
+// onClick={() =>handleUpdate(product._id)}

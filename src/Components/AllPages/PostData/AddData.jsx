@@ -57,6 +57,7 @@ const AddData = () => {
                 name="name"
                 placeholder="Product Name"
                 className="input input-bordered w-full"
+                required
               />
             </label>
           </div>
@@ -70,6 +71,7 @@ const AddData = () => {
                 name="quantity"
                 placeholder="Available Quantity"
                 className="input input-bordered w-full"
+                required
               />
             </label>
           </div>
@@ -102,6 +104,7 @@ const AddData = () => {
                 name="Price"
                 placeholder="Price"
                 className="input input-bordered w-full"
+                required
               />
             </label>
           </div>
@@ -118,6 +121,7 @@ const AddData = () => {
                 name="category"
                 placeholder="Category"
                 className="input input-bordered w-full"
+                required
               />
             </label>
           </div>
@@ -131,6 +135,7 @@ const AddData = () => {
                 name="details"
                 placeholder="Details"
                 className="input input-bordered w-full"
+                required
               />
             </label>
           </div>
@@ -147,6 +152,7 @@ const AddData = () => {
                 name="photo"
                 placeholder="Photo URL"
                 className="input input-bordered w-full"
+                required
               />
             </label>
           </div>

@@ -1,19 +1,35 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import {  useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import SingleCard from "./SingleCard";
 
 
 const Cart = () => {
 
     const { user } = useContext(AuthContext);
     const userCart = useLoaderData();
-    const filteredData = userCart.filter((item) => item.userID == user.uid);
+    const [allCartProduct, setAllCartProduct] = useState(userCart);
+    const filteredData = allCartProduct.filter((item) => item.userID == user.uid);
 
-    console.log(filteredData)
-
+    // console.log(filteredData)
+    const remainingProduct = (id) =>
+    {
+        // console.log(id);
+        const remainingProduct = allCartProduct.filter((item) => item._id != id);
+        setAllCartProduct(remainingProduct);
+    }
     return (
         <div>
-            <h2>{filteredData[0].products.name}</h2>
+            {/* <h2>{filteredData.length}</h2> */}
+
+            {
+                allCartProduct.length ?
+                filteredData.map((product) => (
+                    <SingleCard key={product._id} product ={product} remainingProduct={remainingProduct}></SingleCard>
+                ))
+                :
+                <h2 className="text-center text-black mt-32 text-4xl md:text-6xl bg-orange-400 border rounded-2xl p-12 mx-12">You have no product in your cart</h2>
+            }
         </div>
     );
 };
