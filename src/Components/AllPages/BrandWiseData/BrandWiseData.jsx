@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { useLoaderData, useParams,  } from "react-router-dom";
+import Product from "./Product";
 
 
 const BrandWiseData = () => {
 
     const data = useLoaderData();
     const params = useParams();
-    // console.log(data,params)
-    
     const [brand, setBrand] = useState([]);
 
     const [filteredData, setFilteredData] = useState([]);
@@ -27,13 +26,18 @@ const BrandWiseData = () => {
                 setFilteredData(filteredData);
             });
     }
-    , [brand.brandName])
+    ,[brand.brandName])
 
     console.log(filteredData);
   
     return (
         <div>
-            <h2>{typeof(params.id)}</h2>
+            <h2>{filteredData.length}</h2>
+            {
+                filteredData.map((product) => (
+                    <Product key={product._id} product ={product}></Product>
+                ))
+            }
         </div>
     );
 };

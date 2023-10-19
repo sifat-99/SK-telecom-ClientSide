@@ -1,8 +1,8 @@
-
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import swal from "sweetalert";
+import { FaShoppingCart } from "react-icons/fa";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -11,14 +11,11 @@ const Navbar = () => {
     logOut()
       .then(() => {
         swal("Congratulation!", "You have successfully Logged out!", "success");
-
       })
       .catch((err) => {
         swal("Oops!", `You can not Logged out!${err.message}`, "error");
       });
   };
-
-  
 
   const NavBarItems = (
     <>
@@ -51,15 +48,29 @@ const Navbar = () => {
           About
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          to={"/addData"}
+          className={({ isActive, isPending }) =>
+            isPending
+              ? "pending text-2xl"
+              : isActive
+              ? "bg-[#FF444A] underline text-white font-bold text-2xl"
+              : "text-2xl"
+          }
+        >
+          Add Product
+        </NavLink>
+      </li>
     </>
   );
 
-  return  (
-    <div className="navbar bg-orange-100 text-black font-bold sticky inset-0 z-10 py-5">
+  return (
+    <div className="navbar bg-orange-100 text-black font-bold sticky inset-0 z-10 ">
       <div className="navbar-start">
-        <div className="flex flex-row-reverse ">
+        <div className="flex flex-row-reverse items-center">
           <Link to={"/"}>
-            <img className="w-2/4 h-2/3" src='/S.K.png' alt="" />
+            <img className="w-3/5  md:w-2/5" src="/S.K.png" alt="" />
           </Link>
           <div className="drawer">
             <input id="my-drawer" type="checkbox" className="drawer-toggle" />
@@ -84,13 +95,13 @@ const Navbar = () => {
                 </svg>
               </label>
             </div>
-            <div className="drawer-side">
+            <div className="drawer-side mt-24 w-[178px] rounded-xl md:mt-24">
               <label
                 htmlFor="my-drawer"
                 aria-label="close sidebar"
                 className="drawer-overlay"
               ></label>
-              <ul className="menu p-4 gap-4 w-80 min-h-full bg-base-200 text-base-content">
+              <ul className="menu p-4 gap-4 w-full min-h-full bg-base-200 text-base-content">
                 {NavBarItems}
               </ul>
             </div>
@@ -106,10 +117,10 @@ const Navbar = () => {
                 to={"/dashboard"}
                 className={({ isActive, isPending }) =>
                   isPending
-                    ? "pending"
+                    ? "pending text-2xl"
                     : isActive
-                    ? "bg-[#FF444A] underline text-white font-bold text-xl"
-                    : ""
+                    ? "bg-[#FF444A] underline text-white font-bold text-2xl"
+                    : " text-2xl"
                 }
               >
                 Dashboard
@@ -117,12 +128,22 @@ const Navbar = () => {
             </li>
           ) : (
             <NavLink to={"/register"}>
-              <button className="btn text-2xl font-bold btn-ghost">Register</button>
+              <button className="btn text-2xl font-bold btn-ghost">
+                Register
+              </button>
             </NavLink>
           )}
         </ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end flex gap-4">
+        {user && (
+          <div>
+          <NavLink to={'/Cart'}><button className="flex items-center gap-2 btn normal-case text-white">
+              <h1 className="text-sm md:text-2xl">Cart</h1>
+              <FaShoppingCart className="text-sm md:text-2xl" />
+            </button></NavLink>
+          </div>
+        )}
         {user ? (
           <div>
             <div className="drawer drawer-end">
@@ -148,13 +169,17 @@ const Navbar = () => {
                 <ul className="menu p-4 w-auto min-h-full bg-base-200 text-base-content">
                   <li>{user?.displayName}</li>
                   <li className="mt-8">
-                    <Link to={'/profile'}><button>Profile</button></Link>
+                    <Link to={"/profile"}>
+                      <button>Profile</button>
+                    </Link>
                   </li>
                   <li>
-                    <Link to={'/dashboard'}><button>Dashboard</button></Link>
+                    <Link to={"/dashboard"}>
+                      <button>Dashboard</button>
+                    </Link>
                   </li>
                   <li>
-                   <button onClick={handleLogout}>Sign Out</button>
+                    <button onClick={handleLogout}>Sign Out</button>
                   </li>
                 </ul>
               </div>

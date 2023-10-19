@@ -7,6 +7,7 @@ import Root from "./Components/Root";
 import AddData from "./Components/AllPages/PostData/AddData";
 import PrivateRoute from "./Components/AllPages/PrivateRoute/PrivateRoute";
 import BrandWiseData from "./Components/AllPages/BrandWiseData/BrandWiseData";
+import Cart from "./Components/AllPages/UserCart/Cart";
 
 const Routes = createBrowserRouter([
   {
@@ -32,13 +33,22 @@ const Routes = createBrowserRouter([
         element:<PrivateRoute><AddData></AddData></PrivateRoute>
       },{
         path: "/profile",
-        
+        element:<PrivateRoute><h1>Profile</h1></PrivateRoute>
       },
       {
         path: "/:id",
         element: <BrandWiseData></BrandWiseData>,
         loader: () => fetch(`/Brands.json`),
-      }
+      },
+      {
+        path: "/Cart",
+        element: <PrivateRoute><Cart></Cart></PrivateRoute>,
+        loader: () => fetch('http://localhost:5001/cart'),
+      },
+      {
+        path: "/dashboard",
+        element: <ErrorPage></ErrorPage>,
+      },
     ],
   },
 ]);

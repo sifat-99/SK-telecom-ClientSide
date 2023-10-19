@@ -1,6 +1,7 @@
 import { Link, useLoaderData } from "react-router-dom";
 import Banner from "./Banner";
-import SecondaryNav from "./SecondaryNav";
+import Footer from "./Footer";
+// import SecondaryNav from "./SecondaryNav";
 
 const HomePage = () => {
   const Brands = useLoaderData();
@@ -8,17 +9,16 @@ const HomePage = () => {
 
   return (
     <div>
-      <SecondaryNav></SecondaryNav>
+      {/* <SecondaryNav></SecondaryNav> */}
       <Banner></Banner>
 
-      <div className="mt-24">
+      <div className="mt-8 lg:mt-0">
         <h2 className="text-6xl font-bold text-center">Our Trusted Brands</h2>
       </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-24 w-7/12 mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6 mt-24 px-auto w-11/12 mx-auto">
         {Brands.map((brand, index) => (
           <Link to={`/${brand.id}`} key={index}>
-            <div className="flex flex-col justify-center items-center  w-fit">
+            <div className="flex flex-col justify-center items-center  w-full">
               <img
                 src={brand.brandImage}
                 alt={brand.brandName}
@@ -31,6 +31,7 @@ const HomePage = () => {
           </Link>
         ))}
       </div>
+      <Footer></Footer>
     </div>
   );
 };
