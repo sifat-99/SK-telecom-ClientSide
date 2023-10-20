@@ -1,6 +1,7 @@
 import { Link, useLoaderData } from "react-router-dom";
 import Banner from "./Banner";
 import Footer from "./Footer";
+import ExtraSection from "../../ExtraSections/ExtraSection";
 // import SecondaryNav from "./SecondaryNav";
 
 const HomePage = () => {
@@ -31,6 +32,7 @@ const HomePage = () => {
           </Link>
         ))}
       </div>
+      <ExtraSection></ExtraSection>
       <Footer></Footer>
     </div>
   );

@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "John Doe",
+        "rating": 4.5,
+        "feedback": "Great website! Very informative and easy to navigate."
+    },
+    {
+        "id": 2,
+        "name": "Jane Smith",
+        "rating": 5,
+        "feedback": "I found the content very helpful. The design is also very appealing."
+    },
+    {
+        "id": 3,
+        "name": "Michael Johnson",
+        "rating": 4,
+        "feedback": "The webpage is quite responsive and loads quickly. Great job!"
+    },
+    {
+        "id": 4,
+        "name": "Emily Williams",
+        "rating": 4.8,
+        "feedback": "Impressive content. It helped lot."
+    },
+    {
+        "id": 5,
+        "name": "Robert Brown",
+        "rating": 4.2,
+        "feedback": "The website layout is intuitive and user-friendly. Keep up the good work!"
+    }
+]
