@@ -3,7 +3,7 @@ import swal from "sweetalert";
 
 const Footer = () => {
   const handleSubscribe = () => {
-    swal("Congratulation!", "Thank you for subscribe!", "success");
+    swal("Congratulation!", "Thank you for subscribe!!!!", "success");
   };
 
   return (
