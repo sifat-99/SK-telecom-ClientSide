@@ -31,7 +31,7 @@ const ProductDetails = () => {
         
         // console.log(addToCartByUser);
     
-        fetch(`http://localhost:5001/addProduct/Cart`, {
+        fetch(`https://server-side-assignment10.vercel.app/addProduct/Cart`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(addToCartByUser),

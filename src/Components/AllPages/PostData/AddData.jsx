@@ -30,7 +30,7 @@ const AddData = () => {
     };
     console.log(Product);
     event.target.reset();
-    fetch("http://localhost:5001/addProduct", {
+    fetch("https://server-side-assignment10.vercel.app/addProduct", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(Product),

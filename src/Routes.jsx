@@ -45,7 +45,7 @@ const Routes = createBrowserRouter([
       {
         path: "/Cart",
         element: <PrivateRoute><Cart></Cart></PrivateRoute>,
-        loader: () => fetch('http://localhost:5001/cart'),
+        loader: () => fetch('https://server-side-assignment10.vercel.app/cart'),
       },
       {
         path: "/dashboard",
@@ -54,7 +54,7 @@ const Routes = createBrowserRouter([
       {
         path:"/:id/:_id",
         element:<PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>,
-        loader: () => fetch('http://localhost:5001/products'),
+        loader: () => fetch('https://server-side-assignment10.vercel.app/products'),
       },
       {
         path: "/update/:id",
@@ -62,7 +62,7 @@ const Routes = createBrowserRouter([
         loader: ({params}) =>
         {
             console.log(params)
-            return fetch(`http://localhost:5001/products/${params.id}`)
+            return fetch(`https://server-side-assignment10.vercel.app/products/${params.id}`)
         },
       }
     ],

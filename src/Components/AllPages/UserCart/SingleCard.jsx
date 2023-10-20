@@ -8,7 +8,7 @@ const SingleCard = ({ product, remainingProduct }) => {
   const handleDelete = (id) => {
     // console.log(id)
 
-    fetch(`http://localhost:5001/Cart/${id}`, {
+    fetch(`https://server-side-assignment10.vercel.app/Cart/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

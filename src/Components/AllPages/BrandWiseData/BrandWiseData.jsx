@@ -20,7 +20,7 @@ const BrandWiseData = () => {
     , [data,params.id])
 
     useEffect(() => {
-        fetch('http://localhost:5001/products')
+        fetch('https://server-side-assignment10.vercel.app/products')
             .then((res) => res.json())
             .then((data) => {
                 // console.log(data);

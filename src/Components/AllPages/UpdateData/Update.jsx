@@ -17,7 +17,7 @@ const Update = () => {
             const _id = product._id;
             const updatedProduct = { name, quantity, Price, category, photo, _id };
             console.log(updatedProduct);
-            fetch(`http://localhost:5001/products/${_id}`, {
+            fetch(`https://server-side-assignment10.vercel.app/products/${_id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(updatedProduct),
