@@ -58,10 +58,10 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/update/:id",
-        element:<Update></Update>,
+        element:<PrivateRoute><Update></Update></PrivateRoute>,
         loader: ({params}) =>
         {
-            console.log(params)
+            // console.log(params)
             return fetch(`https://server-side-assignment10.vercel.app/products/${params.id}`)
         },
       }
