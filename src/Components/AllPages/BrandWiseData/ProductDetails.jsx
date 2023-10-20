@@ -44,15 +44,16 @@ const ProductDetails = () => {
         };
 
     return (
-        <div>
-      <h2>{product.length}</h2>
-      <div className="card lg:card-side border bg-base-100 shadow-xl">
+        <div className="mt-20">
+      <div className="card h-[70vh]  border bg-base-100 shadow-xl">
         <figure>
-          <img className="w-[320px]" src={product?.photo} alt="Album" />
+          <img className="w-full p-4 lg:px-32" src={product?.photo} alt="Album" />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">{product?.name}</h2>
-          <p>{product?.Price} $</p>
+          <h2 className="card-title text-6xl">{product?.name}</h2>
+          <h2>{product?.Brand}</h2>
+          <p className="text-2xl text-green-400">Price: {product?.Price} $</p>
+          <p className=" text-justify text-red-400 text-2xl">{product?.details}</p>
           <div className="card-actions justify-end">
             <button onClick={handleADDtoCart} className="btn btn-secondary">
               Add to Cart

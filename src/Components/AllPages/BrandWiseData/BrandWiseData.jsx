@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useLoaderData, useParams,  } from "react-router-dom";
 import Product from "./Product";
-import Banner from "../HomePage/Banner";
+// import Banner from "../HomePage/Banner";
+import BrandWiseBanner from "./BrandWiseBanner";
 
 
 const BrandWiseData = () => {
@@ -33,9 +34,10 @@ const BrandWiseData = () => {
   
     return (
         
-        <div className="mt-28">
-            <Banner></Banner>
-            {/* <h2>{filteredData.length}</h2> */}
+        <div className="mt-28 grid gap-6">
+            <div className="w-7/12 h-2/4 mx-auto mb-20">
+            <BrandWiseBanner filteredData={filteredData}></BrandWiseBanner>
+            </div>
             {
                 filteredData.map((product) => (
                     <Product key={product._id} product ={product}></Product>

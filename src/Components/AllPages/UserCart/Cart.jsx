@@ -19,7 +19,7 @@ const Cart = () => {
         setAllCartProduct(remainingProduct);
     }
     return (
-        <div>
+        <div className="grid gap-6 mt-20">
             {/* <h2>{filteredData.length}</h2> */}
 
             {
